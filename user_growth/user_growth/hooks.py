@@ -11,3 +11,6 @@ after_install = "user_growth.install.after_install"
 website_route_rules = [
 	{"from_route": "/growth-dashboard", "to_route": "/growth_dashboard"},
 ]
+
+# 「用户增长」工作台快捷入口的自定义样式（选择器按 aria-label 限定作用范围）
+app_include_css = ["/assets/user_growth/css/workspace.css"]
