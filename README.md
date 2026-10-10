@@ -11,6 +11,16 @@
 App 另附带公共工作台「**用户增长**」（`growth/workspace/`）：登录后台后侧边栏直达，
 含三个快捷入口——用户服务记录（列表，带数量角标）、用户增长分析（报表）、用户增长大屏（免登录页）。
 
+## 界面预览
+
+**用户增长数据大屏**（免登录，`/growth-dashboard`，1920×1080 设计）
+
+![用户增长数据大屏](docs/screenshots/growth-dashboard.png)
+
+**用户增长分析报表**（Script Report，含图表与逐月明细）
+
+![用户增长分析报表](docs/screenshots/user-growth-analysis-report.png)
+
 ## 快速开始（本仓库自带 Docker 环境）
 
 前置要求：Docker（含 compose v2）。
