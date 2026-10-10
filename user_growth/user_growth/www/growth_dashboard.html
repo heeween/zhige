@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex">
+	<title>用户增长数据大屏</title>
+	<link rel="stylesheet" href="/assets/user_growth/css/dashboard.css?v=1.0.1">
+</head>
+<body>
+	<div id="stage">
+		<div id="screen">
+			<header class="screen-header">
+				<div class="header-side header-left" id="date-line"></div>
+				<h1 class="header-title">用户增长数据大屏</h1>
+				<div class="header-side header-right">
+					<span id="clock"></span>
+					<span class="updated" id="updated-at">数据加载中…</span>
+				</div>
+			</header>
+
+			<section class="kpi-row" id="kpi-row"></section>
+
+			<main class="screen-grid">
+				<aside class="col col-left">
+					<section class="panel">
+						<h3 class="panel-title">套餐分布（在网）</h3>
+						<div id="chart-plan" class="chart"></div>
+					</section>
+					<section class="panel">
+						<h3 class="panel-title">获客渠道（在网）</h3>
+						<div id="chart-channel" class="chart"></div>
+					</section>
+				</aside>
+
+				<section class="col col-center">
+					<section class="panel">
+						<h3 class="panel-title">近 24 个月 · 新增 / 流失 / 净增</h3>
+						<div id="chart-monthly" class="chart chart-lg"></div>
+					</section>
+					<section class="panel">
+						<h3 class="panel-title">在网用户趋势</h3>
+						<div id="chart-trend" class="chart"></div>
+					</section>
+				</section>
+
+				<aside class="col col-right">
+					<section class="panel">
+						<h3 class="panel-title">用户地域分布（在网）</h3>
+						<div id="chart-map" class="chart"></div>
+					</section>
+					<section class="panel">
+						<h3 class="panel-title">最新流失动态</h3>
+						<ul id="churn-feed" class="churn-feed"></ul>
+					</section>
+				</aside>
+			</main>
+		</div>
+	</div>
+
+	<script src="/assets/user_growth/js/echarts.min.js?v=5.5.1"></script>
+	<script src="/assets/user_growth/js/growth_dashboard.js?v=1.0.1"></script>
+</body>
+</html>

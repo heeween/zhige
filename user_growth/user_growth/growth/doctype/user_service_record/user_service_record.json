@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "allow_copy": 0,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:USR-{YYYY}-{#####}",
+ "creation": "2026-10-10 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "user_name",
+  "phone",
+  "customer_type",
+  "service_section",
+  "plan_type",
+  "monthly_fee",
+  "activation_date",
+  "channel",
+  "province",
+  "churn_section",
+  "status",
+  "churn_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "基本信息"
+  },
+  {
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "用户姓名",
+   "reqd": 1
+  },
+  {
+   "description": "仅用于内部管理，大屏与接口不会对外展示",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "手机号"
+  },
+  {
+   "default": "个人",
+   "fieldname": "customer_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "客户类型",
+   "options": "个人\n企业"
+  },
+  {
+   "fieldname": "service_section",
+   "fieldtype": "Section Break",
+   "label": "服务信息"
+  },
+  {
+   "fieldname": "plan_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "套餐类型",
+   "options": "基础版\n标准版\n旗舰版",
+   "reqd": 1
+  },
+  {
+   "fieldname": "monthly_fee",
+   "fieldtype": "Currency",
+   "label": "月费金额",
+   "reqd": 1
+  },
+  {
+   "fieldname": "activation_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "开通日期",
+   "reqd": 1
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "获客渠道",
+   "options": "线上广告\n地推\n转介绍\n自然流入"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "省份",
+   "options": "广东省\n江苏省\n浙江省\n北京市\n山东省\n四川省\n河南省\n湖北省\n福建省\n湖南省"
+  },
+  {
+   "fieldname": "churn_section",
+   "fieldtype": "Section Break",
+   "label": "流失信息"
+  },
+  {
+   "default": "在网",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "状态",
+   "options": "在网\n已流失",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status=='已流失'",
+   "description": "必须晚于开通日期",
+   "fieldname": "churn_date",
+   "fieldtype": "Date",
+   "label": "流失日期"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-10 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Growth",
+ "name": "User Service Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "activation_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "user_name",
+ "track_changes": 1
+}

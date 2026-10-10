@@ -1,0 +1,54 @@
+# user_growth 本地演示环境：Frappe v15 + MariaDB + Redis
+# 用法见 README.md
+# 说明：镜像走 docker.m.daocloud.io 加速；若你的网络可直连 Docker Hub，
+# 可把前缀去掉换回 mariadb:10.6 / redis:6-alpine / frappe/erpnext:v15
+services:
+  db:
+    image: docker.m.daocloud.io/library/mariadb:10.6
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis-cache:
+    image: docker.m.daocloud.io/library/redis:6-alpine
+    restart: unless-stopped
+
+  redis-queue:
+    image: docker.m.daocloud.io/library/redis:6-alpine
+    restart: unless-stopped
+
+  frappe:
+    image: ${FRAPPE_IMAGE:-docker.m.daocloud.io/frappe/erpnext:v15}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./user_growth:/home/frappe/frappe-bench/apps/user_growth
+      - ./scripts:/workspace/scripts:ro
+      - frappe-sites:/home/frappe/frappe-bench/sites
+    ports:
+      - "8000:8000"
+    command: sleep infinity
+
+volumes:
+  db-data:
+  frappe-sites:
